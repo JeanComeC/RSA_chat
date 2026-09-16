@@ -1,7 +1,7 @@
-#include "common.h"
-
 #ifndef CLIENT_ARRAY
 #define CLIENT_ARRAY
+//
+#include <pthread.h>
 //
 struct Client{
     int socket;

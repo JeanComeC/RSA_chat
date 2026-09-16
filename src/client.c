@@ -5,6 +5,7 @@ void* receive_messages_loop_thread(void* socket);
 const char* choice_ipserver(void);
 
 int main(void){
+    
 //Etape 0: ajout perso
     char pseudo_client [50]="";
     do{
