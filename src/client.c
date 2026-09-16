@@ -81,6 +81,7 @@ void* receive_messages_loop_thread(void* socket){
 }
 
 const char* choice_ipserver(void){
+    //peut etre faire une table avec un nom et une ip, pour que ce soit plus lisible (?)
     printf("\nChoose your server :\n");
     printf("JC => 0\nPaul => 1\nAlexandre => 2\n");
     int reponse;
