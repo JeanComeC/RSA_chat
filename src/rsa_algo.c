@@ -1,9 +1,22 @@
 #include "rsa_algo.h"
-#include <math.h>
 
-uint32_t generate_random(){
-    uint32_t nb=0;
-    return nb;
+
+uint32_t generate_random(const char *path){
+    uint32_t nb_random;
+    FILE *f1 = fopen(path,"rb");
+    if(!f1){
+        perror("Error open urandom");
+        exit(1);
+    }
+
+    if(fread(&nb_random,sizeof(nb_random),1,f1)!=1){//doit retourner 1, car on veut lire 1 nombre
+        perror("Error fread urandom");
+        fclose(f1);
+        exit(1);
+    }
+
+    fclose(f1);
+    return nb_random;
 }
 
 bool is_prime(uint32_t random_number){
@@ -19,4 +32,5 @@ bool is_prime(uint32_t random_number){
     }
     return true;
 }
+
 
