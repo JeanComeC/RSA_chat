@@ -52,7 +52,7 @@ int main(void){
         int client_socket=accept(server_socket,(struct sockaddr*)&socket,&taille);
         if (client_socket >= 0) {
             printf("A client is connected!\n");
-            pthread_t thread_main;
+            pthread_t thread_main = 0;
             struct ThreadData threaddata={client_socket,&tableau};
             struct Client client={client_socket,thread_main};
             ca_add(&tableau,client);
