@@ -39,3 +39,27 @@ uint64_t calculate_nn(uint32_t pp, uint32_t qq){
     return nn;
 }
 
+//
+
+uint64_t calculate_jj(uint32_t pp, uint32_t qq){
+    uint64_t jj=((uint64_t)pp-1)*((uint64_t)qq-1);
+    return jj;
+}
+
+uint64_t pgcd(uint64_t a, uint64_t b){
+    while(b!=0){
+        uint64_t tmp = b;
+        b = a%b;
+        a = tmp;
+    }
+    return a;
+}
+
+uint32_t calculate_ee(uint64_t jj){
+    uint32_t ee=EE;
+    while(pgcd(ee,jj)!=1){
+        ee+=2;//on saute les valeurs paires
+    }
+    return ee;
+}
+
