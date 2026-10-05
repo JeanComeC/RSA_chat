@@ -12,6 +12,7 @@
 #include <string.h>
 #include <pthread.h>
 #include "client_array.h"
+#include "rsa_algo.h"
 #include <signal.h>
 #include <unistd.h>
 //MACRO

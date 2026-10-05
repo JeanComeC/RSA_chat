@@ -1,11 +1,20 @@
 #include "common.h"
+#include <stddef.h>
 
 void send_message_loop(int client_socket,char* pseudo_client);
 void* receive_messages_loop_thread(void* socket);
 const char* choice_ipserver(void);
 
 int main(void){
-    
+    int a=8;int b=1154;int c=924865;int d=25478963;size_t e=78965423658745871;
+    if(!is_primacy(a))printf("%d est non premier.\n",a);
+    if(is_primacy(b))printf("%d est premier.\n",b);
+    if(is_primacy(c))printf("%d est premier.\n",c);
+    if(is_primacy(d))printf("%d est premier.\n",d);
+    if(is_primacy(e))printf("%d est premier.\n",e);
+
+    exit(0);
+
 //Etape 0: ajout perso
     char pseudo_client [50]="";
     do{
