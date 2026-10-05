@@ -14,5 +14,7 @@
 //Prototypes
 uint32_t generate_random(const char *path); //fonction pour générer un nombre de 32bits aléatoire avec Urandom.
 bool is_prime(uint32_t random_number); //fonction pour vérifier la primalité d'un nombre.
+uint64_t calculate_nn(uint32_t pp, uint32_t qq); //fonction pour calculer le produit de p et q
+
 
 #endif

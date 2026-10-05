@@ -1,4 +1,5 @@
 #include "rsa_algo.h"
+#include <stdint.h>
 
 
 uint32_t generate_random(const char *path){
@@ -33,4 +34,8 @@ bool is_prime(uint32_t random_number){
     return true;
 }
 
+uint64_t calculate_nn(uint32_t pp, uint32_t qq){
+    uint64_t nn = (uint64_t)pp * (uint64_t)qq;
+    return nn;
+}
 
