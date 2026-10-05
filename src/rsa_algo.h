@@ -5,10 +5,10 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
-#include <sys/types.h>
+#include <stdint.h>
 
 //Prototypes
-u_int32_t generate_random();
-bool is_primacy(u_int32_t random_number);
+uint32_t generate_random();
+bool is_prime(uint32_t random_number); //fonction pour vérifier la primalité d'un nombre.
 
 #endif
