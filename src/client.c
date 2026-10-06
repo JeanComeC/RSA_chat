@@ -11,7 +11,6 @@ int main(void){
     struct Private_key_t private_key=generate_private_key(&ee);
     struct Public_key_t public_key=generate_public_key(ee,private_key.nn);
     printf("%lu\n",private_key.nn);
-    printf("%u\n",ee);
     printf("%u\n",public_key.ee);
     printf("%lu\n",private_key.dd);
 
