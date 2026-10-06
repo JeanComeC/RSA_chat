@@ -12,6 +12,17 @@
 #define PATH_RANDOM_FILE "/dev/urandom"
 #define EE 65537
 
+//Structures
+struct Private_key_t{
+    uint64_t dd;
+    uint64_t nn;
+};
+
+struct Public_key_t{
+    uint32_t ee;
+    uint64_t nn;
+};
+
 //Prototypes
 uint32_t generate_random(const char *path); //fonction pour générer un nombre de 32bits aléatoire avec Urandom.
 bool is_prime(uint32_t random_number); //fonction pour vérifier la primalité d'un nombre.
@@ -22,6 +33,13 @@ uint64_t pgcd(uint64_t a, uint64_t b); //fonction pour calculer le PGCD (Euclide
 uint32_t calculate_ee(uint64_t jj); //fonction pour calculer e, à partir de j.
 
 int64_t pgcd_extended_bezout(int64_t a, int64_t b, int64_t* u, int64_t* v); //fonction pour calculer les coefficients de Bézout.
-uint64_t calculate_dd(uint64_t ee, uint64_t jj); //fonction pour calculer d.
+uint64_t calculate_dd(uint32_t ee, uint64_t jj); //fonction pour calculer d.
+
+struct Private_key_t generate_private_key(uint32_t* ee); //fonction pour générer une clé privé.
+struct Public_key_t generate_public_key(uint32_t ee, uint64_t nn); //fonction pour générer la clé publique associée.
+
+uint64_t modular_exponentiation(uint64_t base, uint64_t exposant, uint64_t modulo);
+uint64_t rsa_encrypt(uint64_t message, struct Public_key_t public_key);
+uint64_t rsa_decrypt(uint64_t cipher, struct Private_key_t private_key);
 
 #endif

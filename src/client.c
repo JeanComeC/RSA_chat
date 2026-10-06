@@ -7,20 +7,13 @@ void* receive_messages_loop_thread(void* socket);
 const char* choice_ipserver(void);
 
 int main(void){
-    uint32_t pp;
-    do {
-        pp = generate_random(PATH_RANDOM_FILE);
-    }while(!is_prime(pp));
-    uint32_t qq;
-    do {
-        qq = generate_random(PATH_RANDOM_FILE);
-    }while(!is_prime(qq));
-    uint64_t nn = calculate_nn(pp,qq);
-    printf("%u\n%u\n%lu\n",pp,qq,nn);
-    uint32_t ee=calculate_ee(calculate_jj(pp,qq));
+    uint32_t ee;
+    struct Private_key_t private_key=generate_private_key(&ee);
+    struct Public_key_t public_key=generate_public_key(ee,private_key.nn);
+    printf("%lu\n",private_key.nn);
     printf("%u\n",ee);
-    uint64_t dd=calculate_dd(ee,calculate_jj(pp,qq));
-    printf("%lu\n",dd);
+    printf("%u\n",public_key.ee);
+    printf("%lu\n",private_key.dd);
 
     exit(0);
 
