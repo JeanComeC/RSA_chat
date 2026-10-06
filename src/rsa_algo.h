@@ -12,6 +12,17 @@
 #define PATH_RANDOM_FILE "/dev/urandom"
 #define EE 65537
 
+//Structures
+struct Private_key_t{
+    uint64_t dd;
+    uint64_t nn;
+};
+
+struct Public_key_t{
+    uint32_t ee;
+    uint64_t nn;
+};
+
 //Prototypes
 uint32_t generate_random(const char *path); //fonction pour générer un nombre de 32bits aléatoire avec Urandom.
 bool is_prime(uint32_t random_number); //fonction pour vérifier la primalité d'un nombre.
@@ -23,5 +34,8 @@ uint32_t calculate_ee(uint64_t jj); //fonction pour calculer e, à partir de j.
 
 int64_t pgcd_extended_bezout(int64_t a, int64_t b, int64_t* u, int64_t* v); //fonction pour calculer les coefficients de Bézout.
 uint64_t calculate_dd(uint64_t ee, uint64_t jj); //fonction pour calculer d.
+
+struct Private_key_t generate_private_key(); //fonction pour générer une clé privé.
+struct Public_key_t generate_public_key(); //fonction pour générer une clé publique.
 
 #endif
