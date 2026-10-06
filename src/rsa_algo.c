@@ -120,3 +120,29 @@ struct Public_key_t generate_public_key(uint32_t ee, uint64_t nn){
     struct Public_key_t public_key={.ee=ee,.nn=nn};
     return public_key;
 }
+
+//
+
+uint64_t modular_exponentiation(uint64_t base, uint64_t exposant, uint64_t modulo){
+    uint64_t result=1;
+    base=base%modulo;
+
+    while(exposant>0){
+        if (exposant & 1){ //si le bit de poids faible de exp est 1:
+            result=((unsigned __int128)result*base)%modulo; //on multiplie
+        }
+        base=((unsigned __int128)base*base)%modulo; //on met base au carré
+        exposant >>= 1; //on décale exp d'un bit vers la droite
+    }
+
+    return result;
+}
+
+uint64_t rsa_encrypt(uint64_t message, struct Public_key_t public_key){
+    return modular_exponentiation(message,public_key.ee,public_key.nn);
+}
+
+uint64_t rsa_decrypt(uint64_t cipher, struct Private_key_t private_key){
+    return modular_exponentiation(cipher,private_key.dd,private_key.nn);
+}
+

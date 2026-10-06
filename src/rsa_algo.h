@@ -38,4 +38,8 @@ uint64_t calculate_dd(uint32_t ee, uint64_t jj); //fonction pour calculer d.
 struct Private_key_t generate_private_key(uint32_t* ee); //fonction pour générer une clé privé.
 struct Public_key_t generate_public_key(uint32_t ee, uint64_t nn); //fonction pour générer la clé publique associée.
 
+uint64_t modular_exponentiation(uint64_t base, uint64_t exposant, uint64_t modulo);
+uint64_t rsa_encrypt(uint64_t message, struct Public_key_t public_key);
+uint64_t rsa_decrypt(uint64_t cipher, struct Private_key_t private_key);
+
 #endif
