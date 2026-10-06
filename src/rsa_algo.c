@@ -82,7 +82,7 @@ int64_t pgcd_extended_bezout(int64_t a, int64_t b, int64_t* u, int64_t* v){
     return g;
 }
 
-uint64_t calculate_dd(uint64_t ee, uint64_t jj){
+uint64_t calculate_dd(uint32_t ee, uint64_t jj){
     int64_t u;
     int64_t v;
     if(pgcd_extended_bezout((int64_t)ee,(int64_t)jj,&u,&v)!=1){
@@ -97,3 +97,26 @@ uint64_t calculate_dd(uint64_t ee, uint64_t jj){
     return (uint64_t)dd;
 }
 
+//
+
+struct Private_key_t generate_private_key(uint32_t* ee){
+    uint32_t pp;
+    do{
+        pp=generate_random(PATH_RANDOM_FILE);
+    }while(!is_prime(pp));
+    uint32_t qq;
+    do{
+        qq=generate_random(PATH_RANDOM_FILE);
+    }while(!is_prime(qq) || qq==pp);//on vérifie que p et q soit bien différent.
+    uint64_t nn=calculate_nn(pp,qq);
+    uint64_t jj=calculate_jj(pp,qq);
+    *ee=calculate_ee(jj);
+    uint64_t dd=calculate_dd(*ee,jj);
+    struct Private_key_t private_key={.dd=dd,.nn=nn};
+    return private_key;
+}
+
+struct Public_key_t generate_public_key(uint32_t ee, uint64_t nn){
+    struct Public_key_t public_key={.ee=ee,.nn=nn};
+    return public_key;
+}

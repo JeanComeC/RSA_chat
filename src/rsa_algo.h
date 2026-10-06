@@ -33,9 +33,9 @@ uint64_t pgcd(uint64_t a, uint64_t b); //fonction pour calculer le PGCD (Euclide
 uint32_t calculate_ee(uint64_t jj); //fonction pour calculer e, à partir de j.
 
 int64_t pgcd_extended_bezout(int64_t a, int64_t b, int64_t* u, int64_t* v); //fonction pour calculer les coefficients de Bézout.
-uint64_t calculate_dd(uint64_t ee, uint64_t jj); //fonction pour calculer d.
+uint64_t calculate_dd(uint32_t ee, uint64_t jj); //fonction pour calculer d.
 
-struct Private_key_t generate_private_key(); //fonction pour générer une clé privé.
-struct Public_key_t generate_public_key(); //fonction pour générer une clé publique.
+struct Private_key_t generate_private_key(uint32_t* ee); //fonction pour générer une clé privé.
+struct Public_key_t generate_public_key(uint32_t ee, uint64_t nn); //fonction pour générer la clé publique associée.
 
 #endif
