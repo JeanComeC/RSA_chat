@@ -1,17 +1,26 @@
 #include "common.h"
-#include <stddef.h>
+#include "rsa_algo.h"
+#include <stdint.h>
 
 void send_message_loop(int client_socket,char* pseudo_client);
 void* receive_messages_loop_thread(void* socket);
 const char* choice_ipserver(void);
 
 int main(void){
-    int a=8;int b=1154;int c=924865;int d=25478963;size_t e=78965423658745871;
-    if(!is_primacy(a))printf("%d est non premier.\n",a);
-    if(is_primacy(b))printf("%d est premier.\n",b);
-    if(is_primacy(c))printf("%d est premier.\n",c);
-    if(is_primacy(d))printf("%d est premier.\n",d);
-    if(is_primacy(e))printf("%d est premier.\n",e);
+    uint32_t pp;
+    do {
+        pp = generate_random(PATH_RANDOM_FILE);
+    }while(!is_prime(pp));
+    uint32_t qq;
+    do {
+        qq = generate_random(PATH_RANDOM_FILE);
+    }while(!is_prime(qq));
+    uint64_t nn = calculate_nn(pp,qq);
+    printf("%u\n%u\n%lu\n",pp,qq,nn);
+    uint32_t ee=calculate_ee(calculate_jj(pp,qq));
+    printf("%u\n",ee);
+    uint64_t dd=calculate_dd(ee,calculate_jj(pp,qq));
+    printf("%lu\n",dd);
 
     exit(0);
 
