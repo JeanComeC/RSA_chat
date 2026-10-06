@@ -40,7 +40,7 @@ uint64_t calculate_nn(uint32_t pp, uint32_t qq){
     return nn;
 }
 
-//
+//===
 
 uint64_t calculate_jj(uint32_t pp, uint32_t qq){
     uint64_t jj=((uint64_t)pp-1)*((uint64_t)qq-1);
@@ -64,7 +64,7 @@ uint32_t calculate_ee(uint64_t jj){
     return ee;
 }
 
-//
+//===
 
 int64_t pgcd_extended_bezout(int64_t a, int64_t b, int64_t* u, int64_t* v){
     //RAPPEL : Théorème de Bézout
@@ -97,7 +97,7 @@ uint64_t calculate_dd(uint32_t ee, uint64_t jj){
     return (uint64_t)dd;
 }
 
-//
+//===
 
 struct Private_key_t generate_private_key(uint32_t* ee){
     uint32_t pp;
@@ -121,7 +121,7 @@ struct Public_key_t generate_public_key(uint32_t ee, uint64_t nn){
     return public_key;
 }
 
-//
+//===
 
 uint64_t modular_exponentiation(uint64_t base, uint64_t exposant, uint64_t modulo){
     uint64_t result=1;
