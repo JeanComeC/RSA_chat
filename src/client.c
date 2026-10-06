@@ -17,6 +17,10 @@ int main(void){
     }while(!is_prime(qq));
     uint64_t nn = calculate_nn(pp,qq);
     printf("%u\n%u\n%lu\n",pp,qq,nn);
+    uint32_t ee=calculate_ee(calculate_jj(pp,qq));
+    printf("%u\n",ee);
+    uint64_t dd=calculate_dd(ee,calculate_jj(pp,qq));
+    printf("%lu\n",dd);
 
     exit(0);
 

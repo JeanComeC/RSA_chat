@@ -21,4 +21,7 @@ uint64_t calculate_jj(uint32_t pp, uint32_t qq); //fonction pour calculer j.
 uint64_t pgcd(uint64_t a, uint64_t b); //fonction pour calculer le PGCD (Euclide) entre 2 nombres.
 uint32_t calculate_ee(uint64_t jj); //fonction pour calculer e, à partir de j.
 
+int64_t pgcd_extended_bezout(int64_t a, int64_t b, int64_t* u, int64_t* v); //fonction pour calculer les coefficients de Bézout.
+uint64_t calculate_dd(uint64_t ee, uint64_t jj); //fonction pour calculer d.
+
 #endif

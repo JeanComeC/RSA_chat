@@ -1,5 +1,6 @@
 #include "rsa_algo.h"
 #include <stdint.h>
+#include <stdio.h>
 
 
 uint32_t generate_random(const char *path){
@@ -61,5 +62,38 @@ uint32_t calculate_ee(uint64_t jj){
         ee+=2;//on saute les valeurs paires
     }
     return ee;
+}
+
+//
+
+int64_t pgcd_extended_bezout(int64_t a, int64_t b, int64_t* u, int64_t* v){
+    //RAPPEL : Théorème de Bézout
+    //a*u + b*v = pgcd(a,b)
+    if(!b){
+        *u=1;
+        *v=0;
+        return a;
+    }
+    int64_t u1;
+    int64_t v1;
+    int64_t g = pgcd_extended_bezout(b,a%b,&u1,&v1);
+    *u = v1;
+    *v = u1-(a/b)*v1;
+    return g;
+}
+
+uint64_t calculate_dd(uint64_t ee, uint64_t jj){
+    int64_t u;
+    int64_t v;
+    if(pgcd_extended_bezout((int64_t)ee,(int64_t)jj,&u,&v)!=1){
+        fprintf(stderr,"Error ee is not co-prime with jj.\n");
+        exit(1);
+    }
+
+    int64_t dd = u%(int64_t)jj;
+    if(dd<0){//si d est négatif, on rajoute lui rajoute j, pour qu'iil soit positif.
+        dd+=(int64_t)jj;
+    }
+    return (uint64_t)dd;
 }
 
